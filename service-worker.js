@@ -1,4 +1,4 @@
-const CACHE_NAME='kayn-v13-1-branding-fix';
+const CACHE_NAME='kayn-v13-2-sin-splash';
 const ASSETS=['/','/index.html','/vista-3d.html','/editor-modulos.html','/manifest.json','/logo.png','/icon-192.png','/icon-512.png','/branding/kayn-logo-main.png','/branding/kayn-logo-horizontal.png','/branding/kayn-icon-192.png','/branding/kayn-icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)).catch(()=>{}))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

@@ -274,35 +274,7 @@ tr:nth-child(even) td{
   border:0!important;
   padding:0!important;
 }
-#kaynSplash{
-  position:fixed;
-  inset:0;
-  z-index:999999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#050505,#151515);
-  flex-direction:column;
-  transition:opacity .35s ease, visibility .35s ease;
-}
-#kaynSplash.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-#kaynSplash img{
-  width:min(72vw,520px);
-  max-height:56vh;
-  object-fit:contain;
-  filter:drop-shadow(0 0 28px rgba(245,196,0,.28));
-}
-#kaynSplash .kaynSplashText{
-  margin-top:18px;
-  color:#f5c400;
-  font-weight:900;
-  letter-spacing:2px;
-  text-align:center;
-}
+
 
 </style><link rel="icon" href="/logo.png">
 
@@ -312,22 +284,7 @@ tr:nth-child(even) td{
 </head>
 <body>
 
-<div id="kaynSplash">
-  <img src="/branding/kayn-logo-main.png" alt="KAYN ANDAMIOS PRO">
-  <div class="kaynSplashText">DISEÑA • CALCULA • PLANIFICA • CONSTRUYE</div>
-</div>
-<script>
-(function(){
-  function hideSplash(){
-    var s=document.getElementById('kaynSplash');
-    if(!s) return;
-    s.classList.add('hide');
-    setTimeout(function(){ if(s && s.parentNode) s.parentNode.removeChild(s); }, 450);
-  }
-  setTimeout(hideSplash, 1200);
-  window.addEventListener('load', function(){ setTimeout(hideSplash, 300); });
-})();
-</script>
+
 <div id="splash">
   <div class="splashLogo">
     <img src="/logo.png" alt="KAYN ANDAMIOS">
@@ -962,7 +919,21 @@ function exportPedidoExcel(){
 </head>
 <body><table border="1">';
  rows.forEach(r=>{content+='<tr>'+r.map(c=>'<td>'+String(c).replaceAll('&','&amp;').replaceAll('<','&lt;')+'</td>').join('')+'</tr>';});
- content+='</table></body></html>';
+ content+='</table>
+<script>
+// KAYN v13.2 - arranque directo sin pantalla de carga
+(function(){
+  function clean(){
+    var s=document.getElementById('kaynSplash');
+    if(s) s.remove();
+  }
+  clean();
+  document.addEventListener('DOMContentLoaded', clean);
+  window.addEventListener('load', clean);
+})();
+</script>
+
+</body></html>';
  let a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([content],{type:'application/vnd.ms-excel;charset=utf-8'})); a.download='pedido-kayn-'+(($('obraNombre').value||'obra').replaceAll(' ','-'))+'.xls'; a.click();
 }
 function printPedido(){

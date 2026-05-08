@@ -1,0 +1,1 @@
+KAYN v13.2: elimina por completo la pantalla de carga/splash. Mantiene logo nuevo e iconos, pero arranca directo.
