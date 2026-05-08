@@ -1,0 +1,1 @@
+KAYN v12.9 Premium UI: limpieza visual, acabado premium, mejor lectura en ordenador y móvil. No modifica cálculos ni funciones principales.

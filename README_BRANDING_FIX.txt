@@ -1,0 +1,1 @@
+KAYN v13.1 Branding Fix: corrige logo antiguo y splash que se quedaba cargando. Reemplaza header, manifest, iconos y splash con cierre automático seguro.
